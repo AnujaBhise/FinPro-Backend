@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from routers.userRoute import router as user_router
+from routers.incomeRoute import router as income_router
 from database import engine, Base
 from models.userModel import User
+from models.incomeModel import Income
 
 import uvicorn
 
@@ -28,7 +30,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(user_router)
-
+app.include_router(income_router)
 # Test route
 @app.get("/")
 def root():
